@@ -236,6 +236,370 @@ inline static void IO_RB6_SetValue(bool value)
 
 */
 #define IO_RB6_SetDigitalOutput()   ( TRISBCLR = (1 << 6) )
+/**
+  @Summary
+    Sets the GPIO pin, RB7, high using LATB7.
+
+  @Description
+    Sets the GPIO pin, RB7, high using LATB7.
+
+  @Preconditions
+    The RB7 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RB7 high (1)
+    IO_RB7_SetHigh();
+    </code>
+
+*/
+#define IO_RB7_SetHigh()          ( LATBSET = (1 << 7) )
+/**
+  @Summary
+    Sets the GPIO pin, RB7, low using LATB7.
+
+  @Description
+    Sets the GPIO pin, RB7, low using LATB7.
+
+  @Preconditions
+    The RB7 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RB7 low (0)
+    IO_RB7_SetLow();
+    </code>
+
+*/
+#define IO_RB7_SetLow()           ( LATBCLR = (1 << 7) )
+
+/**
+  @Summary
+    Sets a value to the GPIO pin.
+
+  @Description
+    Sets or Resets the GPIO pin, RB7, low or high using LATB7.
+
+  @Preconditions
+    The RB7 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    bool value; : value to be set to the GPIO pin.
+
+  @Example
+    <code>
+    // Set RB7 to low.
+    IO_RB7_SetValue(false);
+    </code>
+
+*/
+inline static void IO_RB7_SetValue(bool value)
+{
+  if(value)
+  {
+    IO_RB7_SetHigh();
+  }
+  else
+  {
+    IO_RB7_SetLow();
+  }
+}
+
+/**
+  @Summary
+    Toggles the GPIO pin, RB7, using LATB7.
+
+  @Description
+    Toggles the GPIO pin, RB7, using LATB7.
+
+  @Preconditions
+    The RB7 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Toggle RB7
+    IO_RB7_Toggle();
+    </code>
+
+*/
+#define IO_RB7_Toggle()           ( LATBINV = (1 << 7) )
+/**
+  @Summary
+    Reads the value of the GPIO pin, RB7.
+
+  @Description
+    Reads the value of the GPIO pin, RB7.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    uint16_t portValue;
+
+    // Read RB7
+    postValue = IO_RB7_GetValue();
+    </code>
+
+*/
+#define IO_RB7_GetValue()         PORTBbits.RB7
+/**
+  @Summary
+    Configures the GPIO pin, RB7, as an input.
+
+  @Description
+    Configures the GPIO pin, RB7, as an input.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RB7 as an input
+    IO_RB7_SetDigitalInput();
+    </code>
+
+*/
+#define IO_RB7_SetDigitalInput()   ( TRISBSET = (1 << 7) )
+/**
+  @Summary
+    Configures the GPIO pin, RB7, as an output.
+
+  @Description
+    Configures the GPIO pin, RB7, as an output.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RB7 as an output
+    IO_RB7_SetDigitalOutput();
+    </code>
+
+*/
+#define IO_RB7_SetDigitalOutput()   ( TRISBCLR = (1 << 7) )
+/**
+  @Summary
+    Sets the GPIO pin, RD0, high using LATD0.
+
+  @Description
+    Sets the GPIO pin, RD0, high using LATD0.
+
+  @Preconditions
+    The RD0 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RD0 high (1)
+    IO_RD0_SetHigh();
+    </code>
+
+*/
+#define IO_RD0_SetHigh()          ( LATDSET = (1 << 0) )
+/**
+  @Summary
+    Sets the GPIO pin, RD0, low using LATD0.
+
+  @Description
+    Sets the GPIO pin, RD0, low using LATD0.
+
+  @Preconditions
+    The RD0 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RD0 low (0)
+    IO_RD0_SetLow();
+    </code>
+
+*/
+#define IO_RD0_SetLow()           ( LATDCLR = (1 << 0) )
+
+/**
+  @Summary
+    Sets a value to the GPIO pin.
+
+  @Description
+    Sets or Resets the GPIO pin, RD0, low or high using LATD0.
+
+  @Preconditions
+    The RD0 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    bool value; : value to be set to the GPIO pin.
+
+  @Example
+    <code>
+    // Set RD0 to low.
+    IO_RD0_SetValue(false);
+    </code>
+
+*/
+inline static void IO_RD0_SetValue(bool value)
+{
+  if(value)
+  {
+    IO_RD0_SetHigh();
+  }
+  else
+  {
+    IO_RD0_SetLow();
+  }
+}
+
+/**
+  @Summary
+    Toggles the GPIO pin, RD0, using LATD0.
+
+  @Description
+    Toggles the GPIO pin, RD0, using LATD0.
+
+  @Preconditions
+    The RD0 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Toggle RD0
+    IO_RD0_Toggle();
+    </code>
+
+*/
+#define IO_RD0_Toggle()           ( LATDINV = (1 << 0) )
+/**
+  @Summary
+    Reads the value of the GPIO pin, RD0.
+
+  @Description
+    Reads the value of the GPIO pin, RD0.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    uint16_t portValue;
+
+    // Read RD0
+    postValue = IO_RD0_GetValue();
+    </code>
+
+*/
+#define IO_RD0_GetValue()         PORTDbits.RD0
+/**
+  @Summary
+    Configures the GPIO pin, RD0, as an input.
+
+  @Description
+    Configures the GPIO pin, RD0, as an input.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RD0 as an input
+    IO_RD0_SetDigitalInput();
+    </code>
+
+*/
+#define IO_RD0_SetDigitalInput()   ( TRISDSET = (1 << 0) )
+/**
+  @Summary
+    Configures the GPIO pin, RD0, as an output.
+
+  @Description
+    Configures the GPIO pin, RD0, as an output.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RD0 as an output
+    IO_RD0_SetDigitalOutput();
+    </code>
+
+*/
+#define IO_RD0_SetDigitalOutput()   ( TRISDCLR = (1 << 0) )
 
 /**
     Section: Function Prototypes

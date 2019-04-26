@@ -45,18 +45,18 @@
 #include "pin_manager.h"
 #include "clock.h"
 #include "system.h"
+#include "sccp4_compare.h"
+#include "tmr1.h"
+#include "memory/flash.h"
 #include "interrupt_manager.h"
 #include "exceptions.h"
-#include "tmr1.h"
-#include "sccp4_compare.h"
-#include "memory/flash.h"
 #include "uart1.h"
 
 void SYSTEM_Initialize(void)
 {
     PIN_MANAGER_Initialize();
-    INTERRUPT_Initialize();
     CLOCK_Initialize();
+    INTERRUPT_Initialize();
     SCCP4_COMPARE_Initialize();
     UART1_Initialize();
     TMR1_Initialize();

@@ -47,6 +47,7 @@
 */
 
 #include "sccp4_compare.h"
+#include "pin_manager.h"
 
 /** OC Mode.
 
@@ -96,6 +97,7 @@ void SCCP4_COMPARE_Initialize (void)
 void __attribute__ ((weak)) SCCP4_COMPARE_CallBack(void)
 {
     // Add your custom callback code here
+  //  IO_RB7_Toggle();
 }
 
 void SCCP4_COMPARE_Tasks( void )
@@ -112,6 +114,7 @@ void SCCP4_COMPARE_Tasks( void )
 void __attribute__ ((weak)) SCCP4_COMPARE_TimerCallBack(void)
 {
     // Add your custom callback code here
+   //  IO_RB7_Toggle();
 }
 
 
