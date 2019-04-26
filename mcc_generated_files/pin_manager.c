@@ -63,7 +63,7 @@ void PIN_MANAGER_Initialize (void)
      ***************************************************************************/
     LATA = 0x0040;
     LATB = 0x00C0;
-    LATC = 0x1000;
+    LATC = 0x10C0;
     LATD = 0x0000;
 
     /****************************************************************************
@@ -71,7 +71,7 @@ void PIN_MANAGER_Initialize (void)
      ***************************************************************************/
     TRISA = 0x87C7;
     TRISB = 0xEE3F;
-    TRISC = 0x03FF;
+    TRISC = 0x03FB;
     TRISD = 0x0001;
 
     /****************************************************************************
@@ -83,7 +83,7 @@ void PIN_MANAGER_Initialize (void)
     CNPDD = 0x0000;
     CNPUA = 0x0000;
     CNPUB = 0x00C0;
-    CNPUC = 0x0000;
+    CNPUC = 0x00C0;
     CNPUD = 0x0001;
 
     /****************************************************************************
@@ -107,7 +107,10 @@ void PIN_MANAGER_Initialize (void)
     SYSTEM_RegUnlock(); // unlock PPS
     RPCONbits.IOLOCK = 0;
 
+    RPINR12bits.CLCINAR = 0x0017;    //RC6->CLC1:CLCINA
+    RPINR12bits.CLCINBR = 0x0014;    //RC7->CLC1:CLCINB
     RPOR3bits.RP13R = 0x000B;    //RB8->SCCP4:OCM4
+    RPOR4bits.RP19R = 0x0011;    //RC2->CLC1:CLC1OUT
 
     RPCONbits.IOLOCK = 1; // lock   PPS
     SYSTEM_RegLock(); 
