@@ -167,6 +167,9 @@ void __attribute__ ((weak)) TMR1_CallBack(void)
     uint16_t granica_1=0xD10,granica_2=0x40; // ;
     
     IO_RB6_Toggle();
+    //IO_RC3_Toggle();
+    //IO_RC4_Toggle();
+    
     x++;
     //y+=-k;
     y+=k;

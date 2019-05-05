@@ -128,37 +128,6 @@ void SCCP4_COMPARE_Initialize (void);
 */
 void SCCP4_COMPARE_CallBack(void);
 
-/**
-  @Summary
-    Maintains the driver's state machine and implements its ISR
-
-  @Description
-    This routine is used to maintain the driver's internal state
-    machine and implement its ISR for interrupt-driven implementations.
-  
-  @Preconditions
-    None.
-
-  @Param
-    None.
-
-  @Returns
-    None.
-
-  @Example
-    <code>
-    while (true)
-    {
-        SCCP4_COMPARE_Tasks();
-
-        // Do other tasks
-    }
-    </code>
-    
-*/
-
-void SCCP4_COMPARE_Tasks( void );
-
 
 /**
   @Summary
@@ -178,35 +147,6 @@ void SCCP4_COMPARE_Tasks( void );
 */
 void SCCP4_COMPARE_TimerCallBack(void);
 
-/**
-  @Summary
-    Maintains the driver's state machine and implements its ISR
-
-  @Description
-    This routine is used to maintain the driver's internal state
-    machine and implement its ISR for interrupt-driven implementations.
-  
-  @Preconditions
-    None.
-
-  @Param
-    None.
-
-  @Returns
-    None.
-
-  @Example
-    <code>
-    while (true)
-    {
-        SCCP4_COMPARE_TimerTasks();
-
-        // Do other tasks
-    }
-    </code>
-    
-*/
-void SCCP4_COMPARE_TimerTasks( void );
 
 /**
   @Summary

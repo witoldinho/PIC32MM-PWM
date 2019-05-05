@@ -3,9 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/wtk/MPLABXProjects/PIC32mm048.X/main.c</file>
-            <file>file:/home/wtk/MPLABXProjects/PIC32mm048.X/mcc_generated_files/tmr1.c</file>
-            <file>file:/home/wtk/MPLABXProjects/PIC32mm048.X/mcc_generated_files/sccp4_compare.c</file>
+            <file>file:/home/wicio/MPLABXProjects/PIC32MM-PWM/mcc_generated_files/sccp4_compare.c</file>
+            <file>file:/home/wicio/MPLABXProjects/PIC32MM-PWM/main.c</file>
+            <file>file:/home/wicio/MPLABXProjects/PIC32MM-PWM/mcc_generated_files/tmr1.c</file>
         </group>
     </open-files>
 </project-private>

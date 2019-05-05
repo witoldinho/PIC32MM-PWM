@@ -55,6 +55,16 @@ void INTERRUPT_Initialize (void)
     // Enable Multi Vector Configuration
     INTCONbits.MVEC = 1;
     
+    //    CCPI: CCP 4 Input Capture or Output Compare
+    //    Priority: 1
+        IPC20bits.CCP4IP = 1;
+    //    Sub Priority: 0
+        IPC20bits.CCP4IS = 0;
+    //    CCTI: CCP 4 Timer
+    //    Priority: 1
+        IPC20bits.CCT4IP = 1;
+    //    Sub Priority: 0
+        IPC20bits.CCT4IS = 0;
     //    TI: Timer 1
     //    Priority: 1
         IPC4bits.T1IP = 1;

@@ -50,13 +50,13 @@
 #include "pin_manager.h"
 #include <stdint.h>
 #include <stdbool.h>
-#include "interrupt_manager.h"
-#include "exceptions.h"
-#include "tmr1.h"
-#include "sccp4_compare.h"
 #include "watchdog.h"
 #include "memory/flash.h"
+#include "tmr1.h"
+#include "interrupt_manager.h"
+#include "exceptions.h"
 #include "uart1.h"
+#include "sccp4_compare.h"
 #ifndef _XTAL_FREQ
 #define _XTAL_FREQ  24000000UL
 #endif

@@ -47,6 +47,7 @@
 */
 
 #include "sccp4_compare.h"
+#include "pin_manager.h"
 
 /** OC Mode.
 
@@ -67,38 +68,46 @@ static uint16_t         gSCCP4Mode;
 
 void SCCP4_COMPARE_Initialize (void)
 {
-    // ON enabled; MOD Dual Edge Compare; ALTSYNC disabled; SIDL disabled; OPS Each Time Base Period Match; CCPSLP disabled; TMRSYNC disabled; RTRGEN disabled; CCSEL disabled; ONESHOT disabled; TRIGEN disabled; T32 16 Bit; SYNC None; OPSSRC Timer Interrupt Event; TMRPS 1:64; CLKSEL SYSCLK; 
-    CCP4CON1 = (0x80C4 & 0xFFFF7FFF); //Disabling CCPON bit
-    //ASDGM disabled; ICGSM Level-Sensitive mode; ICS ICM4; SSDG disabled; AUXOUT Disabled; ASDG 0; PWMRSEN disabled; OCAEN disabled; OENSYNC disabled; 
-  CCP4CON2 = 0x1000000;
-    // CCP4CON2 = 0x00;
+    // ON enabled; MOD Dual Edge Compare; ALTSYNC disabled; SIDL disabled; OPS Each Time Base Period Match; CCPSLP disabled; TMRSYNC disabled; RTRGEN disabled; CCSEL disabled; ONESHOT disabled; TRIGEN disabled; T32 16 Bit; SYNC None; OPSSRC Timer Interrupt Event; TMRPS 1:16; CLKSEL SOSC; 
+    CCP4CON1 = (0x8284 & 0xFFFF7FFF); //Disabling CCPON bit
+    //ASDGM disabled; ICGSM Level-Sensitive mode; ICS ICM4; SSDG disabled; AUXOUT Disabled; ASDG 0; PWMRSEN disabled; OCAEN enabled; OENSYNC disabled; 
+    CCP4CON2 = 0x1000000;
     //OETRIG disabled; OSCNT None; POLACE disabled; PSSACE Tri-state; 
     CCP4CON3 = 0x00;
     //SCEVT disabled; TRSET disabled; ICOV disabled; ASEVT disabled; ICGARM disabled; RBWIP disabled; TRCLR disabled; RAWIP disabled; TMRHWIP disabled; TMRLWIP disabled; PRLWIP disabled; 
     CCP4STAT = 0x00;
     //TMRL 0; TMRH 0; 
     CCP4TMR = 0x00;
-    //PRH 0; PRL 3750; 
-    CCP4PR = 0xEA6;
+    //PRH 0; PRL 12287; 
+    CCP4PR = 0x2FFF;
     //CMPA 0; 
     CCP4RA = 0x00;
-    //CMPB 1875; 
-    CCP4RB = 0x753;
+    //CMPB 8191; 
+    CCP4RB = 0x1FFF;
     //BUFL 0; BUFH 0; 
     CCP4BUF = 0x00;
 
     CCP4CON1bits.ON = 0x1; //Enabling CCP
 
     gSCCP4Mode = CCP4CON1bits.MOD;
+    // Clearing IF flag before enabling the interrupt.
+    IFS2CLR= 1 << _IFS2_CCP4IF_POSITION;
+    // Enabling SCCP4 interrupt.
+    IEC2bits.CCP4IE = 1;
 
+    // Clearing IF flag before enabling the interrupt.
+    IFS2CLR= 1 << _IFS2_CCT4IF_POSITION;
+    // Enabling SCCP4 interrupt.
+    IEC2bits.CCT4IE = 1;
 }
 
 void __attribute__ ((weak)) SCCP4_COMPARE_CallBack(void)
 {
     // Add your custom callback code here
+    IO_RC3_Toggle();
 }
 
-void SCCP4_COMPARE_Tasks( void )
+void __attribute__ ( ( vector ( _CCP4_VECTOR ), interrupt ( IPL1SOFT ))) CCP4_ISR (void)
 {
     if(IFS2bits.CCP4IF)
     {
@@ -114,8 +123,7 @@ void __attribute__ ((weak)) SCCP4_COMPARE_TimerCallBack(void)
     // Add your custom callback code here
 }
 
-
-void SCCP4_COMPARE_TimerTasks( void )
+void __attribute__ ( ( vector ( _CCT4_VECTOR ), interrupt ( IPL1SOFT ))) CCT4_ISR (void)
 {
     if(IFS2bits.CCT4IF)
     {
